@@ -1,6 +1,6 @@
 function SoftToPos(token, options) {
   var myToken = token;
-  var mainUrl = "https://api.softtopos.be";
+  var mainUrl = "https://api.";
   var defaults = {
     // your default options here
   };
@@ -115,6 +115,8 @@ function SoftToPos(token, options) {
     circleDiv.style.color = "white";
     circleDiv.style.padding = "28px";
     circleDiv.style.cursor = "pointer";
+    circleDiv.style.zIndex = "9999";
+    circleDiv.style.boxSizing = "unset";
     circleDiv.style.boxShadow =
       "0px 3px 16px 0px rgba(0, 0, 0, 0.6), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)";
     mainDiv.appendChild(circleDiv);
@@ -150,6 +152,7 @@ function SoftToPos(token, options) {
     qrBox.style.borderRadius = "5px";
     qrBox.style.position = "fixed";
     qrBox.style.border = "1px solid rgb(204, 204, 204)";
+    qrBox.style.zIndex = "9999";
     mainDiv.appendChild(qrBox);
 
     // view header
@@ -168,6 +171,7 @@ function SoftToPos(token, options) {
     qrBoxHeader.style.paddingTop = "10px";
     qrBoxHeader.style.paddingBottom = "10px";
     qrBoxHeader.style.paddingLeft = "15px";
+    qrBoxHeader.style.boxSizing = "unset";
     // qrBoxHeader.style.fontFamily = "sans-serif";
     qrBox.appendChild(qrBoxHeader);
 
@@ -205,6 +209,7 @@ function SoftToPos(token, options) {
     qrBoxLog.id = "qr-box-log";
     qrBoxLog.style.padding = "15px";
     qrBoxLog.style.height = "223px";
+    qrBoxLog.style.boxSizing = "unset";
     qrBoxBody.appendChild(qrBoxLog);
 
     var qrImage = document.createElement("img");
@@ -252,6 +257,8 @@ function SoftToPos(token, options) {
     closeCircleDiv.style.padding = "28px";
     closeCircleDiv.style.cursor = "pointer";
     closeCircleDiv.style.display = "none";
+    closeCircleDiv.style.zIndex = "9999";
+    closeCircleDiv.style.boxSizing = "unset";
     closeCircleDiv.style.boxShadow =
       "0px 3px 16px 0px rgba(0, 0, 0, 0.6), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)";
     mainDiv.appendChild(closeCircleDiv);
