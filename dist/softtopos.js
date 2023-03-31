@@ -1,6 +1,6 @@
 function SoftToPos(token, options) {
   var myToken = token;
-  var mainUrl = "https://api.";
+  var mainUrl = "https://api.softtopos.be";
   var defaults = {
     // your default options here
   };
