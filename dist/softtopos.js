@@ -12,6 +12,7 @@ function SoftToPos(token, options) {
     var success_url = "";
     var try_count = 0;
     var site_font = "";
+    var payment_text = settings.payment_text;
     var payment_pending_text = settings.payment_pending_text;
     var payment_success_text = settings.payment_success_text;
     var payment_failed_text = settings.payment_failed_text;
@@ -378,7 +379,7 @@ function SoftToPos(token, options) {
         var cancelRequest = document.querySelector("#close-circle");
         cancelRequest.addEventListener("click", async function () {
             var dynamicPayBtn = document.querySelector(`#${settings.btn_id}`);
-            dynamicPayBtn.innerText = "Pay now";
+            dynamicPayBtn.innerText = payment_text;
             dynamicPayBtn.disabled = false;
             stop = true;
             cancelRequest.style.display = "none";
@@ -439,10 +440,10 @@ function SoftToPos(token, options) {
             dynamicPayBtn.style.backgroundColor = "#e22828";
 
             setTimeout(async () => {
-                dynamicPayBtn.innerText = "Pay Now";
+                dynamicPayBtn.innerText = payment_text;
                 dynamicPayBtn.disabled = false;
                 dynamicPayBtn.style.backgroundColor = "black";
-            }, 2000);
+            }, 3000);
         }
 
         if (request.statusCode == 404) {
@@ -452,10 +453,10 @@ function SoftToPos(token, options) {
             dynamicPayBtn.style.backgroundColor = "#e22828";
 
             setTimeout(async () => {
-                dynamicPayBtn.innerText = "Pay Now";
+                dynamicPayBtn.innerText = payment_text;
                 dynamicPayBtn.disabled = false;
                 dynamicPayBtn.style.backgroundColor = "black";
-            }, 2000);
+            }, 3000);
         }
 
         if (request.statusCode == 200) {
@@ -475,11 +476,11 @@ function SoftToPos(token, options) {
                 dynamicPayBtn.disabled = false;
                 dynamicPayBtn.style.backgroundColor = "#e22828";
                 setTimeout(async () => {
-                    dynamicPayBtn.innerText = "Pay Now";
+                    dynamicPayBtn.innerText = payment_text;
                     dynamicPayBtn.disabled = false;
                     dynamicPayBtn.style.backgroundColor = "black";
-                }, 2000);
-            }, 1000 * 60);
+                }, 3000);
+            }, 1500 * 60);
         }
     }
 
@@ -504,7 +505,7 @@ function SoftToPos(token, options) {
                 }, 2000);
             } else {
                 setTimeout(async () => {
-                    dynamicPayBtn.innerText = "Pay Now";
+                    dynamicPayBtn.innerText = payment_text;
                     dynamicPayBtn.disabled = false;
                     dynamicPayBtn.style.backgroundColor = "black";
                 }, 2000);
@@ -524,7 +525,7 @@ function SoftToPos(token, options) {
                 }, 2000);
             } else {
                 setTimeout(async () => {
-                    dynamicPayBtn.innerText = "Pay Now";
+                    dynamicPayBtn.innerText = payment_text;
                     dynamicPayBtn.disabled = false;
                     dynamicPayBtn.style.backgroundColor = "black";
                 }, 2000);
