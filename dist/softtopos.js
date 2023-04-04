@@ -17,6 +17,7 @@ function SoftToPos(token, options) {
     var payment_success_text = settings.payment_success_text;
     var payment_failed_text = settings.payment_failed_text;
     var loader_color = settings.loader_color;
+    var default_button_color = settings.default_button_color ? settings.default_button_color : "black";
 
     if (settings.success_url && settings.fail_url) {
         fail_url = settings.fail_url;
@@ -442,7 +443,7 @@ function SoftToPos(token, options) {
             setTimeout(async () => {
                 dynamicPayBtn.innerText = payment_text;
                 dynamicPayBtn.disabled = false;
-                dynamicPayBtn.style.backgroundColor = "black";
+                dynamicPayBtn.style.backgroundColor = default_button_color;
             }, 3000);
         }
 
@@ -455,7 +456,7 @@ function SoftToPos(token, options) {
             setTimeout(async () => {
                 dynamicPayBtn.innerText = payment_text;
                 dynamicPayBtn.disabled = false;
-                dynamicPayBtn.style.backgroundColor = "black";
+                dynamicPayBtn.style.backgroundColor = default_button_color;
             }, 3000);
         }
 
@@ -478,7 +479,7 @@ function SoftToPos(token, options) {
                 setTimeout(async () => {
                     dynamicPayBtn.innerText = payment_text;
                     dynamicPayBtn.disabled = false;
-                    dynamicPayBtn.style.backgroundColor = "black";
+                    dynamicPayBtn.style.backgroundColor = default_button_color;
                 }, 3000);
             }, 1500 * 60);
         }
@@ -507,7 +508,7 @@ function SoftToPos(token, options) {
                 setTimeout(async () => {
                     dynamicPayBtn.innerText = payment_text;
                     dynamicPayBtn.disabled = false;
-                    dynamicPayBtn.style.backgroundColor = "black";
+                    dynamicPayBtn.style.backgroundColor = default_button_color;
                 }, 2000);
             }
         }
@@ -527,7 +528,7 @@ function SoftToPos(token, options) {
                 setTimeout(async () => {
                     dynamicPayBtn.innerText = payment_text;
                     dynamicPayBtn.disabled = false;
-                    dynamicPayBtn.style.backgroundColor = "black";
+                    dynamicPayBtn.style.backgroundColor = default_button_color;
                 }, 2000);
             }
         }
