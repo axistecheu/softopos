@@ -71,7 +71,7 @@ function SoftToPos(token, options) {
         overlatDiv.style.width = "100%";
         overlatDiv.style.height = "100%";
         overlatDiv.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
-        overlatDiv.style.zIndex = "999";
+        overlatDiv.style.zIndex = "10000";
         overlatDiv.style.display = "none";
 
         var loaderDiv = document.createElement("div");
@@ -114,7 +114,7 @@ function SoftToPos(token, options) {
         circleDiv.style.color = "white";
         circleDiv.style.padding = "28px";
         circleDiv.style.cursor = "pointer";
-        circleDiv.style.zIndex = "9999";
+        circleDiv.style.zIndex = "10000";
         circleDiv.style.boxSizing = "unset";
         circleDiv.style.boxShadow =
             "0px 3px 16px 0px rgba(0, 0, 0, 0.6), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)";
@@ -151,7 +151,7 @@ function SoftToPos(token, options) {
         qrBox.style.borderRadius = "5px";
         qrBox.style.position = "fixed";
         qrBox.style.border = "1px solid rgb(204, 204, 204)";
-        qrBox.style.zIndex = "9999";
+        qrBox.style.zIndex = "10000";
         mainDiv.appendChild(qrBox);
 
         // view header
@@ -256,7 +256,7 @@ function SoftToPos(token, options) {
         closeCircleDiv.style.padding = "28px";
         closeCircleDiv.style.cursor = "pointer";
         closeCircleDiv.style.display = "none";
-        closeCircleDiv.style.zIndex = "9999";
+        closeCircleDiv.style.zIndex = "10000";
         closeCircleDiv.style.boxSizing = "unset";
         closeCircleDiv.style.boxShadow =
             "0px 3px 16px 0px rgba(0, 0, 0, 0.6), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)";
