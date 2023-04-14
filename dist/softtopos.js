@@ -469,19 +469,20 @@ function SoftToPos(token, options) {
 
             uuid = request.uuid;
             await runRecoursiveApi(uuid);
-            setTimeout(async () => {
-                console.log("time out...");
-                stop = true;
-                cancelRequest.style.display = "none";
-                dynamicPayBtn.innerText = "Request time out";
-                dynamicPayBtn.disabled = false;
-                dynamicPayBtn.style.backgroundColor = "#e22828";
-                setTimeout(async () => {
-                    dynamicPayBtn.innerText = payment_text;
-                    dynamicPayBtn.disabled = false;
-                    dynamicPayBtn.style.backgroundColor = default_button_color;
-                }, 3000);
-            }, 1500 * 60);
+
+            // setTimeout(async () => {
+            //     console.log("time out...");
+            //     stop = true;
+            //     cancelRequest.style.display = "none";
+            //     dynamicPayBtn.innerText = "Request time out";
+            //     dynamicPayBtn.disabled = false;
+            //     dynamicPayBtn.style.backgroundColor = "#e22828";
+            //     setTimeout(async () => {
+            //         dynamicPayBtn.innerText = payment_text;
+            //         dynamicPayBtn.disabled = false;
+            //         dynamicPayBtn.style.backgroundColor = default_button_color;
+            //     }, 3000);
+            // }, 1500 * 60);
         }
     }
 
