@@ -514,7 +514,7 @@ function SoftToPos(token, options) {
             }
         }
 
-        if (status.faild) {
+        if (status.failed) {
             stop = true;
             cancelRequest.style.display = "none";
             dynamicPayBtn.innerText = payment_failed_text;
