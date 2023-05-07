@@ -47,6 +47,18 @@ function SoftToPos(token, options) {
         loading.style.display = "none";
     }
 
+    async function checkDeviceConnected() {
+        var res = await callWebsiteGetApi();
+
+        if (res.device_id) {
+            var chatCircle = document.querySelector("#chat-circle");
+            chatCircle.style.display = "none";
+
+            var deviceCircle = document.querySelector("#device-circle");
+            deviceCircle.style.display = "block";
+        }
+    }
+
     function mainView() {
         var body = document.body;
         site_font = window.getComputedStyle(body).fontFamily;
@@ -58,6 +70,7 @@ function SoftToPos(token, options) {
         createFullLoader();
         createNewFloatingView(mainDiv);
         createCloseFloatingBtn(mainDiv);
+        createDeviceFloatingBtn(mainDiv);
 
         document.body.appendChild(mainDiv);
     }
@@ -98,6 +111,36 @@ function SoftToPos(token, options) {
         document.head.appendChild(style);
 
         document.body.appendChild(overlatDiv);
+    }
+
+    function createDeviceFloatingBtn(mainDiv) {
+        // floating buuton
+        var circleDiv = document.createElement("div");
+        circleDiv.id = "device-circle";
+        circleDiv.style.position = "fixed";
+        circleDiv.style.display = "none";
+        circleDiv.style.bottom = "50px";
+        circleDiv.style.right = "50px";
+        circleDiv.style.background = "#fabc3d";
+        circleDiv.style.width = "25px";
+        circleDiv.style.height = "25px";
+        circleDiv.style.borderRadius = "50%";
+        circleDiv.style.color = "white";
+        circleDiv.style.padding = "28px";
+        circleDiv.style.cursor = "pointer";
+        circleDiv.style.zIndex = "10000";
+        circleDiv.style.boxSizing = "unset";
+        circleDiv.style.boxShadow =
+            "0px 3px 16px 0px rgba(0, 0, 0, 0.6), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)";
+        mainDiv.appendChild(circleDiv);
+
+        var logoIcon = document.createElement("img");
+        logoIcon.id = "deviceIcon";
+        logoIcon.src = "https://ik.imagekit.io/softToPos/wi-fi-off.svg";
+        logoIcon.style.width = "50px";
+        logoIcon.style.margin = "-12px 0 0 -10px";
+        logoIcon.setAttribute("title", "App Disconnect");
+        circleDiv.appendChild(logoIcon);
     }
 
     function createNewFloatingView(mainDiv) {
@@ -266,6 +309,7 @@ function SoftToPos(token, options) {
         closeLogoIcon.id = "close-logoIcon";
         closeLogoIcon.src = "https://ik.imagekit.io/softToPos/cancel.svg";
         closeLogoIcon.setAttribute("width", "100%");
+        closeLogoIcon.setAttribute("title", "Cancel Payment");
         closeCircleDiv.appendChild(closeLogoIcon);
 
         var closeOverLayDiv = document.createElement("div");
@@ -360,8 +404,24 @@ function SoftToPos(token, options) {
         return data;
     }
 
-    async function callPaymentStatusCancelApi(uuid) {
-        let data = await fetch(`${mainUrl}/api/v1/requests/cancel/${uuid}`, {
+    async function callWebsiteGetApi() {
+        let data = await fetch(`${mainUrl}/api/v1/website/get`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${myToken}`,
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        })
+            .then((resp) => resp.json())
+            .then((json) => {
+                return json;
+            });
+        return data;
+    }
+
+    async function callWebsiteDisconnectApi() {
+        let data = await fetch(`${mainUrl}/api/v1/website/disconnect_device`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${myToken}`,
@@ -407,6 +467,16 @@ function SoftToPos(token, options) {
         chatBoxToggle.addEventListener("click", function () {
             var chatBox = document.querySelector("#qr-box");
             chatBox.style.display = "none";
+        });
+
+        var deviceCircle = document.querySelector("#device-circle");
+
+        deviceCircle.addEventListener("click", function () {
+            callWebsiteDisconnectApi();
+
+            var chatCircle = document.querySelector("#chat-circle");
+            deviceCircle.style.display = "none";
+            chatCircle.style.display = "block";
         });
     }
 
@@ -542,22 +612,11 @@ function SoftToPos(token, options) {
         }, 1000);
     }
 
-    function webSocket(url) {
-        var socket = new WebSocket(url);
-
-        socket.addEventListener("", (event) => {
-            console.log("Connection opend");
-        });
-
-        socket.addEventListener("", (event) => {
-            console.log(event);
-        });
-    }
-
     // generate and display QR code for token
     this.displayConnectView = function () {
         mainView();
         events();
+        checkDeviceConnected();
     };
 
     this.displayConnectView();
