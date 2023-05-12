@@ -18,6 +18,11 @@ function SoftToPos(token, options) {
     var payment_failed_text = settings.payment_failed_text;
     var loader_color = settings.loader_color;
     var default_button_color = settings.default_button_color ? settings.default_button_color : "black";
+    var sandbox = settings.sandbox ? true : false;
+    
+    if(sandbox === true) {
+        mainUrl = "https://sandbox.softtopos.be";
+    }
 
     if (settings.success_url && settings.fail_url) {
         fail_url = settings.fail_url;
