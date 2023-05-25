@@ -332,10 +332,11 @@ function SoftToPos(token, options) {
 
     async function callConnectApi() {
         let data = await fetch(`${mainUrl}/api/v1/website/qr`, {
-            method: "POST",
+            method: "GET",
             headers: {
                 Authorization: `Bearer ${myToken}`,
-                "Content-Type": "image/svg+xml",
+                Accept: "application/json",
+                "Content-Type": "application/json",
             },
         })
             .then((resp) => resp.json())
