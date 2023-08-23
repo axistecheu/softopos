@@ -19,6 +19,7 @@ function SoftToPos(token, options) {
     var loader_color = settings.loader_color;
     var default_button_color = settings.default_button_color ? settings.default_button_color : "black";
     var sandbox = settings.sandbox ? true : false;
+    var hide_qr =  settings.hide_qr ? true : false;
     
     if(sandbox === true) {
         mainUrl = "https://sandbox.softtopos.be";
@@ -73,9 +74,12 @@ function SoftToPos(token, options) {
         mainDiv.style.fontFamily = site_font;
 
         createFullLoader();
-        createNewFloatingView(mainDiv);
-        createCloseFloatingBtn(mainDiv);
-        createDeviceFloatingBtn(mainDiv);
+
+        if(hide_qr == false) {
+            createNewFloatingView(mainDiv);
+            createCloseFloatingBtn(mainDiv);
+            createDeviceFloatingBtn(mainDiv);
+        }
 
         document.body.appendChild(mainDiv);
     }
